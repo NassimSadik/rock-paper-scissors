@@ -44,7 +44,16 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-const computerChoice = getComputerChoice();
-const humanChoice = getHumanChoice();
+function playGame() {
+  let round = 0;
+  while (round != 5) {
+    const computerChoice = getComputerChoice();
+    const humanChoice = getHumanChoice();
 
-playRound(humanChoice, computerChoice);
+    playRound(humanChoice, computerChoice);
+    round += 1;
+    console.log(`Rounds remaining : ${5 - round}`);
+  }
+}
+
+playGame();
