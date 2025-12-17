@@ -9,3 +9,42 @@ function getHumanChoice() {
   let value = prompt('Enter your choice (Rock Paper or Scissors) : ');
   return value;
 }
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+  humanChoice =
+    humanChoice.charAt(0).toUpperCase() +
+    humanChoice.substring(1).toLowerCase();
+
+  if (
+    (humanChoice === 'Rock' && computerChoice === 'Scissors') ||
+    (humanChoice === 'Paper' && computerChoice === 'Rock') ||
+    (humanChoice === 'Scissors' && computerChoice === 'Paper')
+  ) {
+    console.log('You won! ' + humanChoice + ' beats ' + computerChoice + '.');
+    console.log(
+      `Player score = ${(humanScore += 1)} | Computer score = ${computerScore}`
+    );
+  } else if (
+    (humanChoice === 'Rock' && computerChoice === 'Paper') ||
+    (humanChoice === 'Paper' && computerChoice === 'Scissors') ||
+    (humanChoice === 'Scissors' && computerChoice === 'Rock')
+  ) {
+    console.log('You lose. ' + computerChoice + ' beats ' + humanChoice + '.');
+    console.log(
+      `Player score = ${humanScore} | Computer score = ${(computerScore += 1)}`
+    );
+  } else {
+    console.log('Its a draw! You and the computer choose ' + humanChoice + '.');
+    console.log(
+      `Player score = ${humanScore} | Computer score = ${computerScore}`
+    );
+  }
+}
+
+const computerChoice = getComputerChoice();
+const humanChoice = getHumanChoice();
+
+playRound(humanChoice, computerChoice);
